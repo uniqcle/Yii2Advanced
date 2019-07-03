@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use Yii;
+use frontend\components\StringHelper;
 
 class News
 {
@@ -11,6 +12,21 @@ class News
         $maxNewsInList = intval($maxNewsInList);
 
         $sql = "SELECT * FROM news LIMIT ".$maxNewsInList;
-        return Yii::$app->db->createCommand($sql)->queryAll();
+        $result =  Yii::$app->db->createCommand($sql)->queryAll();
+
+        //Создаем экземпляр класса StringHelper
+        $helper = new StringHelper();
+
+        if(!empty( $result ) && is_array( $result )){
+
+            //Использование компонента StringHelper
+            foreach($result as &$item):
+                $item['content'] = $helper->getShort( $item['content'] );
+            endforeach;
+
+        }
+
+        return $result;
+
 }
 }
