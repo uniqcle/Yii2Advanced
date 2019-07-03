@@ -21,7 +21,7 @@ class News
 
             //Использование компонента StringHelper
             foreach($result as &$item):
-                $item['content'] = $helper->getShort( $item['content'] );
+                $item['content'] = $helper->getShort( $item['content'], 30 );
             endforeach;
 
         }

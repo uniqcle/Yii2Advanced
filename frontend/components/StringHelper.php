@@ -2,11 +2,24 @@
 
 namespace frontend\components;
 
+use Yii;
+
 class StringHelper
 {
-    //Укорачивание текста. На входе принимает какой-то аргумент
-    public function getShort($string){
+    public $limit; //Определяем св-во limit
 
-        return substr($string, 0, 20);
+    public function __construct(){
+        $this->limit = Yii::$app->params["shortTextLimit"];
+    }
+
+    //Укорачивание текста. На входе принимает какой-то аргумент
+    public function getShort($string, $limit = null){
+
+        //Если в методе задан limit, то используем его. Если не задан по-умолч. , то берем из параметров.
+        if( empty( $limit )){
+            $limit = $this->limit;
+        }
+
+        return substr($string, 0, $limit );
     }
 }
