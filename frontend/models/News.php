@@ -6,9 +6,11 @@ use Yii;
 
 class News
 {
-    public static function  getNewsList(){
+    public static function  getNewsList($maxNewsInList){
 
-        $sql = "SELECT * FROM news";
+        $maxNewsInList = intval($maxNewsInList);
+
+        $sql = "SELECT * FROM news LIMIT ".$maxNewsInList;
         return Yii::$app->db->createCommand($sql)->queryAll();
 }
 }
