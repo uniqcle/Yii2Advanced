@@ -17,4 +17,14 @@ class NewsController extends Controller
             'listNews' => $listNews
         ]);
     }
+
+    //Генерация страницы для конкретной новости
+    public function actionView($id){
+    	
+    	$itemNews = News::getNewsItem($id); 
+
+    	return $this->render('view', [
+            'itemNews' => $itemNews 
+        ]); 
+    }
 }

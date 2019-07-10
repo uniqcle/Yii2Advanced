@@ -30,6 +30,12 @@ class News
         }
 
         return $result;
+    }
 
-}
+    public static function getNewsItem($id){
+
+        $sql = "SELECT * FROM news WHERE id = ".$id; 
+
+        return Yii::$app->db->createCommand($sql)->queryOne(); 
+    }
 }
