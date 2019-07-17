@@ -1,22 +1,11 @@
- <?php 
- echo $anyMessage
-  ?>
-  111
-<table style="border: 1px solid #ddd; border-collapse: collapse; width: 100%;">
- <thead>
- <tr style="background: #f9f9f9;">
- <th style="padding: 8px; border: 1px solid #ddd;">#</th>
- <th style="padding: 8px; border: 1px solid #ddd;">Имя</th>
- </tr>
- </thead>
- <tbody>
- <?php $i = 1; foreach($names as $name): ?>
- <tr>
- <td style="padding: 8px; border: 1px solid #ddd;"><?= $i ?></td>
- <td style="padding: 8px; border: 1px solid #ddd;"><?= $name ?></td>
- </tr>
- <?php $i++; endforeach; ?>
 
+<h2>Привет, <?=$subscriber['name'] ?></h2>
 
- </tbody>
-</table>
+<p>Свежие новости: </p>
+
+<?php foreach($newsList as $item): ?>
+
+<h3><?=$item['title']; ?></h3>
+<p><?=$item['content']; ?></p>
+
+<?php endforeach; ?>
