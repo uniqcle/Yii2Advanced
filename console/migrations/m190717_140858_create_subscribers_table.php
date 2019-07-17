@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Handles the creation of table `{{%subscribers}}`.
  */
-class m190717_124830_create_subscribers_table extends Migration
+class m190717_140858_create_subscribers_table extends Migration
 {
     /**
      * {@inheritdoc}
@@ -14,7 +14,9 @@ class m190717_124830_create_subscribers_table extends Migration
     {
         $this->createTable('{{%subscribers}}', [
             'id' => $this->primaryKey(),
-            'email' => $this->string()->unique()->notNull()
+            'name' => $this->string(255)->notNull(),
+            'email' => $this->string(255)->notNull(),
+            'status' => $this->integer(3)
         ]);
     }
 
