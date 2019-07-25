@@ -49,7 +49,10 @@ return [
         ],
 
 
-
     ],
     'params' => $params,
+    'aliases' => [
+            '@files' => '/var/www/project/upload/files', 
+            '@photos' => '@files/photos'
+        ]
 ];
